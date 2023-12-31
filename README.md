@@ -1,18 +1,26 @@
-# vitualE3
-virtual E3 device for testing reading and writing DIDs in conjunction with [open3e](https://github.com/abnoname/open3e) or other communication tools.
+# virtual E3
+Virtual E3 device for testing reading and writing DIDs for **testing of ioBroker adapter** [e3oncan](https://github.com/MyHomeMyData/ioBroker.e3oncan.git).
 
-- place virtualE3.py and virtdyndata.py in the same directory where Open3E is located (multiple files are shared).
-- run Open3E_depictSystem.py with command line option -s (--simul) set.
+This is a fork of project [virtualE3](https://github.com/philippoo66/vitualE3.git).
 
-Afterwards you have a complete snapshot of your E3 system and using virtualE3 you can work with Open3E on this instead of your real device/s. Best to use virtual CAN bus vcan0 instead of can0 with both virtualE3 and Open3Eclient.
+For testing you need a **virtual CAN bus** to connect both the ioBroker adapter and virtual E3. To setup virtual CAN "vcan0" please refer to https://netmodule-linux.readthedocs.io/en/latest/howto/can.html. For typical linux setup it's done like this:
+```
+ip link add dev vcan0 type vcan
+ip link set vcan0 mtu 72
+ip link set up vcan0
+```
 
-Utilizing virtdyndata.py and command line option `-dyn` you can have randomly changing values within set ranges for DIDs configured as dyn.
+Now you can setup and start virtual E3. After cloning the repo install required packages and start the application:
+```
+pip3 install -r requirements.txt
+python3 virtualE3.py -cnfg devices.json
+```
 
-Use
+This version of virtual E3 brings two pre-installed virutal devices (HMI, VCMU) including sample data.
 
-    python3 virtualE3.py -cnfg dev
+When virtual E3 is up and running you may start the ioBroker adapter e3oncan, connect it to vcan0 as external can adapter and complete the adapter setup for further testing. As of now, the testing works for **UDS functionality only**. Virtual E3 does not support the listener option ("collecting") of e3oncan.
 
-to run virtualE3 utilizing configuration built by Open3E_depictSystem. (dev is programmed shortcut for devices.json)
+There are further options available for use of virtual E3:
 
 # Usage
 
@@ -34,3 +42,5 @@ to run virtualE3 utilizing configuration built by Open3E_depictSystem. (dev is p
 # Requirements
 
 https://pypi.org/project/python-can/
+
+https://github.com/pylessard/python-udsoncan.git

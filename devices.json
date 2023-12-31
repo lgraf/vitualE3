@@ -1,0 +1,12 @@
+{
+  "0x684": {
+    "tx": "0x684",
+    "dpList": "Open3Edatapoints_684.py",
+    "prop": "HMI"
+  },
+  "0x68c": {
+    "tx": "0x68c",
+    "dpList": "Open3Edatapoints_68c.py",
+    "prop": "VCMU"
+  }
+}
