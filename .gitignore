@@ -6,3 +6,8 @@ udsoncan.log
 scan.log
 # user specific files
 .vscode/
+.venv/
+#packaging
+*.egg
+__pycache__/
+*.egg-info/
