@@ -3,6 +3,8 @@ Virtual E3 device for testing reading and writing DIDs for **testing of ioBroker
 
 This is a fork of project [virtualE3](https://github.com/philippoo66/vitualE3.git).
 
+**This branch is NOT intended for normal use!**
+
 For testing you need a **virtual CAN bus** to connect both the ioBroker adapter and virtual E3. To setup virtual CAN "vcan0" please refer to https://netmodule-linux.readthedocs.io/en/latest/howto/can.html. For typical linux setup it's done like this:
 ```
 ip link add dev vcan0 type vcan
@@ -16,9 +18,7 @@ pip3 install -r requirements.txt
 python3 virtualE3.py -cnfg devices.json
 ```
 
-This version of virtual E3 brings two pre-installed virutal devices (HMI, VCMU) including sample data.
-
-When virtual E3 is up and running you may start the ioBroker adapter e3oncan, connect it to vcan0 as external can adapter and complete the adapter setup for further testing. As of now, the testing works for **UDS functionality only**. Virtual E3 does not support the listener option ("collecting") of e3oncan.
+This version of virtual E3 brings two pre-installed virutal devices (HPMUMASTER, EMCUMASTER) including sample data. The devices configuation is strongly reduced to meet requirements for **integration testing of open3e**. Only a small subset of data points is available.
 
 There are further options available for use of virtual E3:
 
